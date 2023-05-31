@@ -14,7 +14,7 @@ public class Curso {
     private String dtReconhecimento;
     private String turno;
 
-    public Curso(){
+    public Curso() {
         super();
     }
 
@@ -40,7 +40,6 @@ public class Curso {
             conn.close();
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -66,7 +65,58 @@ public class Curso {
             conn.close();
 
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void delete() {
+        try {
+            Connection conn = DriverManager
+                    .getConnection("jdbc:mariadb://localhost:3306/AcademicoES?user=root&password=qwerty@123");
+            String query = "delete from Cursos where id=" + getId() + ";";
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.executeQuery();
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update() {
+        String valuesToUpdate = "";
+        Curso dbCurso = new Curso();
+        dbCurso.setId(getId());
+        dbCurso.retrieve();
+        
+        if (!getNome().equals(dbCurso.getNome())) {
+            valuesToUpdate += "nome = \'" + getNome() + "\' ";
+        }
+        if (getDtAutorizacao() != dbCurso.getDtAutorizacao()) {
+            valuesToUpdate += "dtAutorizacao = \'" + getNome() + "\' ";
+        }
+        if (!getDtReconhecimento().equals(dbCurso.getDtReconhecimento())) {
+            valuesToUpdate += "dtReconhecimento = \'" + getDtReconhecimento() + "\' ";
+        }
+        if (!getTurno().equals(dbCurso.getTurno())) {
+            valuesToUpdate += "turno = \'" + getTurno() + "\' ";
+        }
+
+        try {
+            Connection conn = DriverManager
+                    .getConnection("jdbc:mariadb://localhost:3306/AcademicoES?user=root&password=qwerty@123");
+            String query = "update pessoas set " + valuesToUpdate + "where id=" + getId() + ";";
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.executeQuery();
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
