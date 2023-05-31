@@ -96,7 +96,7 @@ public class Curso {
             valuesToUpdate += "nome = \'" + getNome() + "\' ";
         }
         if (getDtAutorizacao() != dbCurso.getDtAutorizacao()) {
-            valuesToUpdate += "dtAutorizacao = \'" + getNome() + "\' ";
+            valuesToUpdate += "dtAutorizacao = \'" + getDtAutorizacao() + "\' ";
         }
         if (!getDtReconhecimento().equals(dbCurso.getDtReconhecimento())) {
             valuesToUpdate += "dtReconhecimento = \'" + getDtReconhecimento() + "\' ";
@@ -108,7 +108,7 @@ public class Curso {
         try {
             Connection conn = DriverManager
                     .getConnection("jdbc:mariadb://localhost:3306/AcademicoES?user=root&password=qwerty@123");
-            String query = "update pessoas set " + valuesToUpdate + "where id=" + getId() + ";";
+            String query = "update Cursos set " + valuesToUpdate + "where id=" + getId() + ";";
             PreparedStatement stmt = conn.prepareStatement(query);
 
             stmt.executeQuery();
