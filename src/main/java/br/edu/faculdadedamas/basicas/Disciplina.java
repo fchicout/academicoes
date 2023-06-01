@@ -160,4 +160,11 @@ public class Disciplina {
         this.periodo = periodo;
     }
 
+    @Override
+    public String toString() {
+        return "Disciplina [id=" + id + ", nome=" + nome + ", cargaHoraria=" + cargaHoraria + ", vagas=" + vagas
+                + ", periodo=" + periodo + "]";
+    }
+
+    
 }

@@ -1,6 +1,6 @@
 package br.edu.faculdadedamas;
 
-import br.edu.faculdadedamas.basicas.Curso;
+import br.edu.faculdadedamas.basicas.Curriculo;
 
 /**
  * Hello world!
@@ -8,9 +8,11 @@ import br.edu.faculdadedamas.basicas.Curso;
  */
 public class App {
     public static void main(String[] args) {
-        Curso c = new Curso();
-        c.setId(1);
-        c.retrieve();
-        System.out.println(c);
+        Curriculo curriculo = new Curriculo();
+        curriculo.setId(1);
+        curriculo.retrieve();
+
+        System.out.println(curriculo);
+
     }
 }
