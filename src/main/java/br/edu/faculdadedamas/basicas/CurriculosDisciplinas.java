@@ -10,12 +10,9 @@ public class CurriculosDisciplinas {
     private Curriculo curriculo;
     private Disciplina disciplina;
 
-    
     public CurriculosDisciplinas() {
         super();
     }
-
-    
 
     public CurriculosDisciplinas(Curriculo curriculo, Disciplina disciplina) {
         this.curriculo = curriculo;
@@ -72,7 +69,6 @@ public class CurriculosDisciplinas {
             e.printStackTrace();
         }
     }
-
 
     public Curriculo getCurriculo() {
         return curriculo;
