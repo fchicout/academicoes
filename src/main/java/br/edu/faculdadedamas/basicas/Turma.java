@@ -105,7 +105,57 @@ public class Turma {
         }
     }
 
-    
+    public void delete() {
+        try {
+            Connection conn = DriverManager
+                    .getConnection("jdbc:mariadb://localhost:3306/AcademicoES?user=root&password=qwerty@123");
+            String query = "delete from Turmas where id=" + getId() + ";";
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.executeQuery();
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void update() {
+        String valuesToUpdate = "";
+        Turma dbTurma = new Turma();
+        dbTurma.setId(getId());
+        dbTurma.retrieve();
+        
+        if (!getCodigo().equals(dbTurma.getCodigo())) {
+            valuesToUpdate += "codigo = \'" + getCodigo() + "\' ";
+        }
+        if (!getTurno().equals(dbTurma.getTurno())) {
+            valuesToUpdate += "turno = \'" + getTurno() + "\' ";
+        }
+        if (!getFkProfessor().getCpf().equals(dbTurma.getFkProfessor().getCpf())) {
+            valuesToUpdate += "fk_Professores_id = " + getFkProfessor().getId() + " ";
+        }
+        if (getFkDisciplina().getId() != dbTurma.getFkDisciplina().getId()) {
+            valuesToUpdate += "fk_Disciplinas_id = " + getFkDisciplina().getId() + " ";
+        }
+
+        try {
+            Connection conn = DriverManager
+                    .getConnection("jdbc:mariadb://localhost:3306/AcademicoES?user=root&password=qwerty@123");
+            String query = "update Turmas set " + valuesToUpdate + "where id=" + getId() + ";";
+            PreparedStatement stmt = conn.prepareStatement(query);
+
+            stmt.executeQuery();
+
+            stmt.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public int getId() {
         return id;
