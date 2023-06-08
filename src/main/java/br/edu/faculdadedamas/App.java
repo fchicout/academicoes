@@ -1,6 +1,6 @@
 package br.edu.faculdadedamas;
 
-import br.edu.faculdadedamas.basicas.Curriculo;
+import br.edu.faculdadedamas.basicas.Aluno;
 
 /**
  * Hello world!
@@ -8,11 +8,14 @@ import br.edu.faculdadedamas.basicas.Curriculo;
  */
 public class App {
     public static void main(String[] args) {
-        Curriculo curriculo = new Curriculo();
-        curriculo.setId(1);
-        curriculo.retrieve();
+        Aluno a = new Aluno();
+        a.setCpf("12312312311");
+        a.setDtMatricula("2022-05-23");
+        a.setDtNascimento("1987-10-19");
+        a.setMatricula("201233544");
+        a.setNome("Fabio");
 
-        System.out.println(curriculo);
+        System.out.println(a);
 
     }
 }
